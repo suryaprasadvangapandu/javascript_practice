@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tasks{
+            display: flex;
+            gap: 3rem;
+        }
+        a{
+            text-decoration: none;
+            padding: 3px 6px;
+            background-color: rgb(93, 56, 214);
+            border-radius:80px;
+            color:white;
+        }
+        .btns{
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+        }
+        button{
+            padding: 8px 12px;
+            background-color: coral;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="tasks">
+        <a href="task_1.html">task-1</a>
+        <a href="task_2.html">task-2</a>
+        <a href="task_3.html">task-3</a>
+        <a href="task_4.html">task-4</a>
+    </div>
+    <div class="btns">
+        <button type="button" id="btn-1">Button-1</button>
+        <button type="button" id="btn-2">Button-2</button>
+        <button type="button" id ="btn-3">Button-3</button>
+    </div>
+    <script>
+        let btn_1 = document.getElementById("btn-1")
+        let container = document.createElement('div')
+        let image
+        container.style.height = "400px"
+        container.style.width = "400px"
+        document.body.appendChild(container) 
+        btn_1.addEventListener("click",function(){
+            let images = document.getElementsByTagName('img')
+            if(images.length==0){
+            image = document.createElement('img')
+            image.src = "https://images.unsplash.com/photo-1784219335652-b5511350865d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
+            image.height = "400"
+            image.width = "400"
+            container.appendChild(image)
+            }
+        })
+
+        let btn_2 = document.getElementById('btn-2')
+        btn_2.addEventListener("click",function(){
+            image.style.border="5px solid #2196F3"
+        })
+        let btn_3 = document.getElementById('btn-3')
+            btn_3.addEventListener("click",function(){
+                container.removeChild(image)
+            })
+    </script>
+</body>
+</html>

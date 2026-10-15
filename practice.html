@@ -4,49 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Card Carousel</title>
+    <title>Card Slider</title>
 
     <style>
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            padding: 30px;
-            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 40px 20px;
         }
 
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Main carousel */
         .carousel {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            position: relative;
             width: 100%;
+            max-width: 1100px;
+            margin: auto;
         }
 
+        /* Cards container */
         .container {
             display: flex;
             gap: 2rem;
             overflow: hidden;
-            flex: 1;
-            padding: 10px 0;
+            padding: 10px 5px;
+            scroll-behavior: smooth;
         }
 
+        /* Individual card */
         .card {
             height: 300px;
             width: 200px;
             flex: 0 0 200px;
-            background-color: black;
+            background: black;
+            color: white;
             display: flex;
             flex-direction: column;
-            color: white;
-            transition: transform 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.4s;
         }
 
         .card:hover {
-            transform: scale(1.05);
+            transform: scale(1.04);
         }
 
+        /* Image section */
         .img {
             height: 200px;
             width: 100%;
@@ -57,159 +70,173 @@
             height: 100%;
             width: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s;
         }
 
         .card:hover .img img {
             transform: scale(1.1);
         }
 
+        /* Text section */
         .text {
             height: 100px;
-            width: 100%;
-            padding: 10px;
+            padding: 12px;
+            text-align: center;
         }
 
-        .text h2 {
-            font-size: 18px;
-            margin: 5px 0;
+        .text h3 {
+            margin-bottom: 8px;
         }
 
+        .text p {
+            font-size: 13px;
+        }
+
+        /* Transparent arrow buttons */
         .arrow {
-            height: 45px;
-            width: 45px;
-            flex-shrink: 0;
-            border: none;
-            border-radius: 50%;
-            background-color: black;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+
+            background: rgba(255, 255, 255, 0.25);
             color: white;
-            font-size: 25px;
+            border: none;
+            font-size: 35px;
+            padding: 12px 15px;
             cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s;
         }
 
         .arrow:hover {
-            background-color: #444;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        /* Left arrow */
+        #left {
+            left: 5px;
+        }
+
+        /* Right arrow */
+        #right {
+            right: 5px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container {
+                gap: 1rem;
+            }
+
+            .card {
+                flex-basis: 180px;
+                width: 180px;
+            }
+
+            .arrow {
+                font-size: 28px;
+                padding: 10px;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <h1>My Cards</h1>
+
     <div class="carousel">
 
-        <button class="arrow" id="left">❮</button>
+        <!-- Left arrow -->
+        <button class="arrow" id="left">&#10094;</button>
 
+        <!-- Cards -->
         <div class="container" id="container">
 
             <div class="card">
                 <div class="img">
-                    <img src="https://images.unsplash.com/photo-1784231882379-aa63ea3b7305?w=600&auto=format&fit=crop&q=60" alt="Nature">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400" alt="Mountain landscape">
                 </div>
                 <div class="text">
-                    <h2>Beautiful Nature</h2>
-                    <p>Enjoy the beauty of nature.</p>
+                    <h3>Nature</h3>
+                    <p>Beautiful natural scenery.</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="img">
-                    <img src="https://images.unsplash.com/photo-1784231882379-aa63ea3b7305?w=600&auto=format&fit=crop&q=60" alt="Nature">
+                    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=400" alt="Lake and mountains">
                 </div>
                 <div class="text">
-                    <h2>Green Forest</h2>
-                    <p>Explore the green forests.</p>
+                    <h3>Mountains</h3>
+                    <p>Explore the mountains.</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="img">
-                    <img src="https://images.unsplash.com/photo-1784231882379-aa63ea3b7305?w=600&auto=format&fit=crop&q=60" alt="Nature">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400" alt="Green forest">
                 </div>
                 <div class="text">
-                    <h2>Natural Beauty</h2>
-                    <p>Discover beautiful landscapes.</p>
+                    <h3>Forest</h3>
+                    <p>Enjoy the green forest.</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="img">
-                    <img src="https://images.unsplash.com/photo-1784231882379-aa63ea3b7305?w=600&auto=format&fit=crop&q=60" alt="Nature">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400" alt="Scenic landscape">
                 </div>
                 <div class="text">
-                    <h2>Mountains</h2>
-                    <p>Enjoy the mountain views.</p>
+                    <h3>Landscape</h3>
+                    <p>Discover beautiful places.</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="img">
-                    <img src="https://images.unsplash.com/photo-1784231882379-aa63ea3b7305?w=600&auto=format&fit=crop&q=60" alt="Nature">
+                    <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400" alt="Wildlife">
                 </div>
                 <div class="text">
-                    <h2>Waterfalls</h2>
-                    <p>Experience refreshing waterfalls.</p>
+                    <h3>Wildlife</h3>
+                    <p>Discover amazing wildlife.</p>
                 </div>
             </div>
 
             <div class="card">
                 <div class="img">
-                    <img src="https://images.unsplash.com/photo-1784231882379-aa63ea3b7305?w=600&auto=format&fit=crop&q=60" alt="Nature">
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400" alt="Mountain peaks">
                 </div>
                 <div class="text">
-                    <h2>Green Valley</h2>
-                    <p>Relax in the green valley.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1784231882379-aa63ea3b7305?w=600&auto=format&fit=crop&q=60" alt="Nature">
-                </div>
-                <div class="text">
-                    <h2>Green Valley</h2>
-                    <p>Relax in the green valley.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1784231882379-aa63ea3b7305?w=600&auto=format&fit=crop&q=60" alt="Nature">
-                </div>
-                <div class="text">
-                    <h2>Green Valley</h2>
-                    <p>Relax in the green valley.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="img">
-                    <img src="https://images.unsplash.com/photo-1784231882379-aa63ea3b7305?w=600&auto=format&fit=crop&q=60" alt="Nature">
-                </div>
-                <div class="text">
-                    <h2>Green Valley</h2>
-                    <p>Relax in the green valley.</p>
+                    <h3>Adventure</h3>
+                    <p>Start your next adventure.</p>
                 </div>
             </div>
 
         </div>
 
-        <button class="arrow" id="right">❯</button>
+        <!-- Right arrow -->
+        <button class="arrow" id="right">&#10095;</button>
 
     </div>
 
     <script>
-        let container = document.getElementById('container');
-        let left = document.getElementById('left');
-        let right = document.getElementById('right');
+        let container = document.getElementById("container");
+        let left = document.getElementById("left");
+        let right = document.getElementById("right");
 
-        left.addEventListener('click', function() {
+        left.addEventListener("click", function () {
             container.scrollBy({
                 left: -232,
-                behavior: 'smooth'
+                behavior: "smooth"
             });
         });
 
-        right.addEventListener('click', function() {
+        right.addEventListener("click", function () {
             container.scrollBy({
                 left: 232,
-                behavior: 'smooth'
+                behavior: "smooth"
             });
         });
     </script>
